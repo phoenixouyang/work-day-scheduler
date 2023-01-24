@@ -2,9 +2,69 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 
+var hr9 = $('#hour-9');
+var hr10 = $('#hour-10');
+var hr11 = $('#hour-11');
+var hr12 = $('#hour-12');
+var hr13 = $('#hour-13');
+var hr14 = $('#hour-14');
+var hr15 = $('#hour-15');
+var hr16 = $('#hour-16');
+var hr17 = $('#hour-17');
+var allHours = [
+  {
+    container: hr9,
+    hour: 9,
+  },
+  {
+    container: hr10,
+    hour: 10,
+  },
+  {
+    container: hr11,
+    hour: 11,
+  },
+  {
+    container: hr12,
+    hour: 12,
+  },
+  {
+    container: hr13,
+    hour: 13,
+  },
+  {
+    container: hr14,
+    hour: 14,
+  },
+  {
+    container: hr15,
+    hour: 15,
+  },
+  {
+    container: hr16,
+    hour: 16,
+  },
+  {
+    container: hr17,
+    hour: 17,
+  },
+];
 
 var today = dayjs();
-$('#currentDay').text(today)
+var currentHour = dayjs().$H;
+$('#currentDay').text(today.format('dddd, MMMM D') + 'th');
+console.log(currentHour);
+
+for (var i = 0; i < allHours.length; i++) {
+  if (currentHour > allHours[i].hour) {
+    allHours[i].container.addClass('past');
+  } else if (currentHour == allHours[i].hour) {
+    allHours[i].container.addClass('present')
+  } else {
+    allHours[i].container.addClass('future')
+  }
+}
+
 
 $(function () {
   // TODO: Add a listener for click events on the save button. This code should
