@@ -2,87 +2,123 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 
-var hr9 = $('#hour-9');
-var hr10 = $('#hour-10');
-var hr11 = $('#hour-11');
-var hr12 = $('#hour-12');
-var hr13 = $('#hour-13');
-var hr14 = $('#hour-14');
-var hr15 = $('#hour-15');
-var hr16 = $('#hour-16');
-var hr17 = $('#hour-17');
+// use DayJS to declare variables for current day and hour
+var today = dayjs();
+var currentHour = dayjs().$H;
+
+// Display and format current day at top of page
+$('#currentDay').text(today.format('dddd, MMMM D') + 'th');
+
+// create an array to match the DOM element div, and hour in number format
 var allHours = [
   {
-    container: hr9,
+    container: $('#hour-9'),
     hour: 9,
   },
   {
-    container: hr10,
+    container: $('#hour-10'),
     hour: 10,
   },
   {
-    container: hr11,
+    container: $('#hour-11'),
     hour: 11,
   },
   {
-    container: hr12,
+    container: $('#hour-12'),
     hour: 12,
   },
   {
-    container: hr13,
+    container: $('#hour-13'),
     hour: 13,
   },
   {
-    container: hr14,
+    container: $('#hour-14'),
     hour: 14,
   },
   {
-    container: hr15,
+    container: $('#hour-15'),
     hour: 15,
   },
   {
-    container: hr16,
+    container: $('#hour-16'),
     hour: 16,
   },
   {
-    container: hr17,
+    container: $('#hour-17'),
     hour: 17,
   },
 ];
 
-var today = dayjs();
-var currentHour = dayjs().$H;
-$('#currentDay').text(today.format('dddd, MMMM D') + 'th');
-console.log(currentHour);
-
+// loop through each hour and change formating depending on it's relationship to the current hour
 for (var i = 0; i < allHours.length; i++) {
   if (currentHour > allHours[i].hour) {
     allHours[i].container.addClass('past');
   } else if (currentHour == allHours[i].hour) {
-    allHours[i].container.addClass('present')
+    allHours[i].container.addClass('present');
   } else {
-    allHours[i].container.addClass('future')
+    allHours[i].container.addClass('future');
   }
-}
+};
+
+var textArea9 = $('#hour-9').children('textarea');
+textArea9.val(localStorage.getItem('hour9'))
 
 
-$(function () {
-  // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
-  //
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  //
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  //
-  // TODO: Add code to display the current date in the header of the page.
+
+// declare variables for each save button
+var btn9 = $('#hour-9').children('button');
+var btn10 = $('#hour-10').children('button');
+var btn11 = $('#hour-11').children('button');
+var btn12 = $('#hour-12').children('button');
+var btn13 = $('#hour-13').children('button');
+var btn14 = $('#hour-14').children('button');
+var btn15 = $('#hour-15').children('button');
+var btn16 = $('#hour-16').children('button');
+var btn17 = $('#hour-17').children('button');
+
+// create a click event for each button that will save the corresponding text to local storage
+btn9.on('click', function () {
+  var text9 = $('#hour-9').children('textarea').val();
+  localStorage.setItem("hour9", text9);
 });
+
+btn10.on('click', function () {
+  var text10 = $('#hour-10').children('textarea').val();
+  localStorage.setItem("hour10", text10);
+});
+
+btn11.on('click', function () {
+  var text11 = $('#hour-11').children('textarea').val();
+  localStorage.setItem("hour11", text11);
+});
+
+btn12.on('click', function () {
+  var text12 = $('#hour-12').children('textarea').val();
+  localStorage.setItem("hour12", text12);
+});
+
+btn13.on('click', function () {
+  var text13 = $('#hour-13').children('textarea').val();
+  localStorage.setItem("hour13", text13);
+});
+
+btn14.on('click', function () {
+  var text14 = $('#hour-14').children('textarea').val();
+  localStorage.setItem("hour14", text14);
+});
+
+btn15.on('click', function () {
+  var text15 = $('#hour-15').children('textarea').val();
+  localStorage.setItem("hour15", text15);
+});
+
+btn16.on('click', function () {
+  var text16 = $('#hour-16').children('textarea').val();
+  localStorage.setItem("hour16", text16);
+});
+
+btn17.on('click', function () {
+  var text17 = $('#hour-17').children('textarea').val();
+  localStorage.setItem("hour17", text17);
+});
+
