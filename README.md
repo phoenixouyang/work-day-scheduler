@@ -10,7 +10,7 @@ N/A
 
 ## Usage
 
-The deployed webpage can be accessed [here]().
+The deployed webpage can be accessed [here](https://phoenixouyang.github.io/work-day-scheduler/).
 
 Today's date will always be displayed at the top. Work hours from 9am-5pm are displayed, with areas that allow for user text input. Past hour blocks are grey, future hours are green, and the current hour is displayed in red. Once something is entered, click the corresponding save button. This will ensure that the information stays even if you leave or refresh the page.
 
